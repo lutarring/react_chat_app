@@ -1,13 +1,144 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --color-bg: #3f2860;
+  --color-primary: rgb(246, 240, 235);
+  --color-bg-variant: #2c2c6c;
+  --color-primary-pink: rgb(248, 171, 166);
+  --color-primary-green: #90c5a9;
+  --color-primary-green-variant: #7a9a95;
+  --color-primary-orange: #fa8b60;
+  --color-primary-orange-variant: #ef6d3b;
+  --color-primary-bule: rgb(8, 24, 58);
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --color-black:rgb(25, 28, 30);
+  --color-primary-red: rgb(246, 66, 72);
+
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%
+  --container-width-md: 86%
+  --container-width-sm: 90%
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: var(--color-primary);
+  color: var(--color-black);
+  line-height: 2.0;
+  background: repeat-y center/60% url(../src/assets/Jullien.jpg);
+}
+
+/* =========================== GENEARL STYLES ============================ */
+.container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 1000;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+section {
+  margin-top: 8rem;
+}
+section > h2,
+section > h5 {
+  text-align: center;
+  color: var(--color-light);
+}
+
+section > h2 {
+  color: var(--color-primary-green);
+  margin-bottom: 3rem;
+}
+
+.text-light {
+  color: var(--color-primary-pink-variant);
+}
+
+a {
+  color: var(--color-primary-green);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-white);
+}
+
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary-red);
+  padding: 0.5rem 1.0rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-orange);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* ==================== MEDIA QUERIRES (MEDIUM DEICES) ===================== */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 86%;
+  }
+
+  section {
+    margin-top: 6rem;
+  }
+}
+/* ==================== MEDIA QUERIRES (SMALL DEICES) ===================== */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
 }
