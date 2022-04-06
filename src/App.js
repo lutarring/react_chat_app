@@ -1,17 +1,15 @@
 import './index.css';
-import Chat from './component/Chat';
+import Chat from './component/Chat/Chat';
 import Header from './component/Header/Header';
+import Send from './component/Send/Send';
+
 
 function App() {
 
   return (
     <>
     <Header />
-    <Chat />
-    <Chat />
-    <Chat />
-    <Chat />
-    <Chat />
+    <Send />
     <Chat />
     </>
   );

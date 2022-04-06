@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Dancing+Script&family=Lobster&family=Noto+Sans+JP:wght@100&display=swap');
 
 header {
-    height: 50px;
+    height: 65px;
     overflow: hidden;
     background-color: var(--color-primary-bule);
     color: var(--color-primary-red);
@@ -15,32 +15,32 @@ header {
   }
 
   .back-button {
+    margin-top: 0.2rem;
     margin-left: 2rem;
     font-family: 'Dancing Script', cursive;
-    line-height: 1.5;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     width:15%;
   }
 
   .title {
     position: relative;
-    font-size: 1.2rem;
-    line-height: 1.7;
+    font-size: 1.4rem;
     font-family: 'Lobster', cursive;
     text-align: center;
     width:70%;
   }
 
   .change-button {
-    line-height: 1.2;
-    margin-top: 0;
-    font-size: 2rem;
+    font-size: 2.3rem;
     width: 15%;
+    text-align: right;
+    margin-right: 2rem;
+    
   }
 
-  .change-button:hover{
-    font-size: 2.5rem;
-    width: 15%;
+  .change-button > a:hover {
+    transform: scale(1.2) ;
   }
+
 
   
