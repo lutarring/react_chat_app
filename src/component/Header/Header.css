@@ -30,15 +30,27 @@ header {
     width:70%;
   }
 
-  .change-button {
-    font-size: 2.3rem;
+  .logOut_div {
+    position: relative;
     width: 15%;
     text-align: right;
+    }
+
+
+  .logOut_button{
+    margin-top: 0.75rem;
     margin-right: 2rem;
-    
+    background: var(--color-primary-red);
+    color: var(--color-white);
+    height:2.5rem;
+    width:6rem;
+    font-family: 'Lobster', cursive;
+    /* font-family: 'Lobster', cursive; */
+    border-radius: 3rem;
+    font-size: 1.3rem;
   }
 
-  .change-button > a:hover {
+  .logOut_button:hover {
     transform: scale(1.2) ;
   }
 

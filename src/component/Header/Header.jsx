@@ -1,9 +1,20 @@
 import React from 'react'
 import '../../index.css'
 import './Header.css'
-import {RiExchangeLine} from 'react-icons/ri'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { getAuth, signOut } from "firebase/auth";
 
 const Header = () => {
+  const auth = getAuth();
+  const [user] = useAuthState(auth);
+  const signOutWithGoogle = () => {
+    signOut(auth).then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+  }
+
   return (
     <header>
       <div className="container header_container">
@@ -13,9 +24,11 @@ const Header = () => {
       <div className="title">
         <h2>Chat Room</h2>
       </div>
-      <div className="change-button">
-      <a href="#contactme" className="btn"><RiExchangeLine /></a>
-      </div>
+      {user? <>
+      <div className="logOut_div">
+         <button className="btn logOut_button" onClick={signOutWithGoogle}>Log out</button>
+      </div></>:<></>}
+      
       </div>
     </header>
   )

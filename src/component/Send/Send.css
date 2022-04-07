@@ -3,12 +3,12 @@
 
 form {
     padding-top: 12rem;
-    padding-left: 6rem;
+    padding-left: 5rem;
 }
 
 form > input {
     height: 3rem;
-    width: 27rem;
+    width: 30%;
     font-family: 'Roboto Mono', monospace;
   }
 
