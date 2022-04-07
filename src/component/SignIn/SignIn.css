@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Dancing+Script&family=Lobster&family=Noto+Sans+JP:wght@100&display=swap');
+
+.signIn_container {
+    width: 24rem;
+    height: 18rem;
+    background: var(--color-primary) ;
+    display: block;
+    left: 50%;
+    top: 20%;
+    position: fixed;
+    border-radius: 4rem;
+    transform: translateX(-50%);
+    backdrop-filter: invert(70%);
+    backdrop-filter: opacity(20%);
+    border: 0.6rem solid var(--color-primary-bule);
+  }
+
+  .signIn_body{
+    text-align: center;
+    color: var(--color-primary-bule);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 1000;
+    height: 8%;
+  }
+  .signIn_text{
+    margin-top: 2.5rem;
+    display: block;
+  }
+  .signIn_icon{
+    margin-top: 1rem;
+    margin-left: 11rem;
+    margin-bottom: 1rem;
+    transform: rotate(0.5turn);
+    display: block;
+    animation: 3s ease-in 1s 2 reverse both paused slidein;
+  }
+  
+  .signIn_button{
+    background: var(--color-primary-red);
+    color: var(--color-white);
+    margin: 0 auto;
+    height:3.5rem;
+    width:13rem;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .signIn_button:hover{
+    transform: scale(1.2);
+  }
