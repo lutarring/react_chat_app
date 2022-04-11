@@ -1,15 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
 
-.chat_container {
-    width: 40%;
-    height: 40rem;
-    background: var(--color-light) ;
-    display: block;
-    left: 55%;
-    top: 12%;
-    position: fixed;
-    border-radius: 1.5rem;
+  .chat_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 40%;
+  gap: 2rem;
+
+  }
+
+  .chat_container > div {
+    border-radius: 2rem;
+  }
+
+  .chat_box {
+    display: grid;
+    padding: 10px;
+    background: var(--color-light);
+    height: 30rem;
     backdrop-filter: blur(15px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    
   }
 
 .chat_title{
@@ -22,6 +36,44 @@
 
 .chat_body{
     height: 80%;
-    padding-left: 1.5rem;
 }
 
+form>input {
+  height: 3rem;
+  font-family: 'Roboto Mono', monospace;
+  width:80%;
+}
+
+form>button {
+  height: 3rem;
+  font-family: 'Dosis', sans-serif;
+  background: var(--color-primary-red);
+  color: var(--color-black);
+    width:20%;
+}
+
+/* ==================== MEDIA QUERIRES (MEDIUM DEICES) ===================== */
+@media screen and (max-width: 1024px) {
+  .chat_container {
+  grid-template-columns: 1fr;
+  }
+
+  .chat_container > div {
+    width: 80%;
+    padding: 2rem;
+    margin: 0 auto;
+      }
+}
+
+/* ==================== MEDIA QUERIRES (SMALL DEICES) ===================== */
+@media screen and (max-width: 600px) {
+  .chat_container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .chat_container>div {
+    width: 100%;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+}

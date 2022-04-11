@@ -5,7 +5,9 @@ import {BsHandIndexThumbFill} from 'react-icons/bs'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Message from '../Message/Message';
+
 
  // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,24 +26,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
 
-
-
 const SignIn = () => {
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider)
-  .then((result) => {
+    signInWithPopup(auth, provider).then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    console.log(user);
     // ...
   }).catch((error) => {
     // Handle Errors here.
@@ -55,12 +52,22 @@ const SignIn = () => {
   });
   }
 
+  const getData = async (e) => {
+  const querySnapshot = await getDocs(collection(db, "chat"));
+  const dataArray = querySnapshot.docs.map(doc => doc.data());
+  console.log('dataArray',dataArray);
+  return dataArray;
+  }
+
+
   return (
     <div className="signIn_container">
       <div className="signIn_body">
         <h2 className="signIn_text">SignIn to chat</h2>
          <BsHandIndexThumbFill className='signIn_icon'/>
          <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
+         {/* <button className="btn signIn_button" onClick={getData}>get data</button> */}
+
       </div>
     </div>
   )

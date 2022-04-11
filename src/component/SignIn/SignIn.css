@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Dancing+Script&family=Lobster&family=Noto+Sans+JP:wght@100&display=swap');
 
-.signIn_container {
-    width: 24rem;
-    height: 18rem;
+.signIn_container{
+  text-align: center;
+  height: 100%;
+  position: relative;
+}
+
+.signIn_container > div {
+    margin-top: 5rem;
     background: var(--color-primary) ;
-    display: block;
+    width: 22rem;
+    position: absolute;
+    height: 16.5rem;
     left: 50%;
-    top: 20%;
-    position: fixed;
-    border-radius: 4rem;
     transform: translateX(-50%);
+    border-radius: 4rem;
     backdrop-filter: invert(70%);
     backdrop-filter: opacity(20%);
     border: 0.6rem solid var(--color-primary-bule);
@@ -25,12 +30,12 @@
     height: 8%;
   }
   .signIn_text{
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     display: block;
   }
   .signIn_icon{
     margin-top: 1rem;
-    margin-left: 11rem;
+    margin-left: 9.5rem;
     margin-bottom: 1rem;
     transform: rotate(0.5turn);
     display: block;
@@ -41,6 +46,7 @@
     background: var(--color-primary-red);
     color: var(--color-white);
     margin: 0 auto;
+    margin-bottom: 2rem;
     height:3.5rem;
     width:13rem;
     text-align: center;
@@ -51,4 +57,30 @@
 
   .signIn_button:hover{
     transform: scale(1.2);
+  }
+
+  /* ==================== MEDIA QUERIRES (MEDIUM DEICES) ===================== */
+  @media screen and (max-width: 1024px) {
+    .signIn_container >div{
+      margin: 0 auto;
+      margin-top: 15rem;
+      width:30rem;
+    }
+
+    .signIn_icon {
+      margin-left: 13.5rem;     
+    }
+  
+  }
+  
+  /* ==================== MEDIA QUERIRES (SMALL DEICES) ===================== */
+  @media screen and (max-width: 600px) {
+    .signIn_container >div{
+      margin: 0 auto;
+      margin-top: 9rem;
+      width:20rem;
+    }
+    .signIn_icon {
+      margin-left: rem;
+    }
   }
