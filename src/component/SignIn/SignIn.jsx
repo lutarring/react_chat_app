@@ -3,18 +3,9 @@ import '../SignIn/SignIn.css'
 import {BsHandIndexThumbFill} from 'react-icons/bs'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import Message from '../Message/Message';
 
-
- // TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+  const firebaseConfig = {
   apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
   authDomain: "react-chat-app-ab6e6.firebaseapp.com",
   projectId: "react-chat-app-ab6e6",
@@ -25,8 +16,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
@@ -50,13 +40,6 @@ const SignIn = () => {
     const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
   });
-  }
-
-  const getData = async (e) => {
-  const querySnapshot = await getDocs(collection(db, "chat"));
-  const dataArray = querySnapshot.docs.map(doc => doc.data());
-  console.log('dataArray',dataArray);
-  return dataArray;
   }
 
 
