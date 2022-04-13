@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react';
 import '../SignIn/SignIn.css'
 import {BsHandIndexThumbFill} from 'react-icons/bs'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import ChatContext from '../ChatContext.tsx';
 
   const firebaseConfig = {
   apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
@@ -17,11 +19,15 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+  const db = getFirestore(app);
 
 
 const SignIn = () => {
+const { messages, setMessage } = ChatContext.useContainer();
+
+  //login
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -29,7 +35,6 @@ const SignIn = () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
-    // ...
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -42,6 +47,18 @@ const SignIn = () => {
   });
   }
 
+  // get  message datas.
+    const getData = async () => {
+    const querySnapshot = await getDocs(collection(db, "chat"));
+    const dataArray = querySnapshot.docs.map(doc => doc.data());
+    return dataArray;
+  }
+
+  if(messages.length === 0){
+   getData().then((d) => {
+    setMessage(d);
+  });
+ }
 
   return (
     <div className="signIn_container">
@@ -49,8 +66,6 @@ const SignIn = () => {
         <h2 className="signIn_text">SignIn to chat</h2>
          <BsHandIndexThumbFill className='signIn_icon'/>
          <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
-         {/* <button className="btn signIn_button" onClick={getData}>get data</button> */}
-
       </div>
     </div>
   )

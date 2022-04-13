@@ -5,14 +5,14 @@ import Message from '../Message/Message';
 import moment from 'moment';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import ChatContext from '../ChatContext.tsx';
 
 
 const Chat = () => {
-  const date = moment().calendar();
-  console.log('date', date);
+const { messages, setMessage } = ChatContext.useContainer();
 
+  const date = moment().calendar();
   const [formValue, setFormValue] = useState('');
-  // const [messages, setmessage] = useState('123');
 
   const firebaseConfig = {
   apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
@@ -27,20 +27,6 @@ const Chat = () => {
 // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
- 
-  let dataArray;
-  const getData = async () => {
-  const querySnapshot = await getDocs(collection(db, "chat"));
-  　dataArray = querySnapshot.docs.map(doc => doc.data());
-  // setmessage(dataArray);
-  console.log('dataArray in ',dataArray);
-  // console.log('m in',messages);
-  }
-  
-  getData();
-  console.log('dataArray out',dataArray);
-  // console.log('m out',messages);
-
 
   return (
     <section className="chat">
@@ -50,9 +36,7 @@ const Chat = () => {
           <h2>{date}</h2>
           </div>
           <div className="chatroom_body">
-            editting...
-            {dataArray}
-             {/* { data.map(d => <Message key={d.id} message={d} />) } */}
+             {messages? messages.map((m) => <Message key={m.createdAt} message={m}/>) : <></>}
           </div>
           <div className="chat_bottom_bar">
           </div>
