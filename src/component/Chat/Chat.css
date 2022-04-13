@@ -75,24 +75,31 @@ button:disabled {
 @media screen and (max-width: 1024px) {
   .chat_container {
   grid-template-columns: 1fr;
+  width: 70%;
   }
 
   .chat_container > div {
     width: 80%;
-    padding: 2rem;
     margin: 0 auto;
       }
+
+  .chat_box {
+    height: 34rem;
+  }
 }
 
 /* ==================== MEDIA QUERIRES (SMALL DEICES) ===================== */
 @media screen and (max-width: 600px) {
   .chat_container {
+    width: 85%;
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
   .chat_container>div {
     width: 100%;
-    padding: 2rem;
     margin: 0 auto;
+  }
+
+  .chat_box {
+      height: 34rem;
   }
 }

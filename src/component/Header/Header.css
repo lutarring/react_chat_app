@@ -60,9 +60,6 @@ header {
 
 /* ==================== MEDIA QUERIRES (SMALL DEICES) ===================== */
 @media screen and (max-width: 600px) {
-  header {
-    height: 10vh;
-  }
   .back-button,
   .logOut_div {
     display: none;
