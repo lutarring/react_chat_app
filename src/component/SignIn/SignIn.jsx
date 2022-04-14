@@ -5,6 +5,7 @@ import {BsHandIndexThumbFill} from 'react-icons/bs'
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { query, orderBy, limit, where } from "firebase/firestore";
 import ChatContext from '../ChatContext.tsx';
 
   const firebaseConfig = {
@@ -29,27 +30,18 @@ const { messages, setMessage } = ChatContext.useContainer();
 
   //login
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
+    signInWithPopup(auth, provider).catch((err) => alert(err.message));
   }
+
+  const chatRef = collection(db, "chat");
+  const q = query(chatRef);
+  const q2 = query(chatRef, where("uid", "==", "Tarring"));
+  console.log("q",q);
+  console.log("q2",q2);
 
   // get  message datas.
     const getData = async () => {
-    const querySnapshot = await getDocs(collection(db, "chat"));
+    const querySnapshot = await getDocs(chatRef);
     const dataArray = querySnapshot.docs.map(doc => doc.data());
     return dataArray;
   }
