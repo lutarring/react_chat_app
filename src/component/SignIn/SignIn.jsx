@@ -5,7 +5,6 @@ import {BsHandIndexThumbFill} from 'react-icons/bs'
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { query, orderBy, limit, where } from "firebase/firestore";
 import ChatContext from '../ChatContext.tsx';
 
   const firebaseConfig = {
@@ -34,16 +33,16 @@ const { messages, setMessage } = ChatContext.useContainer();
   }
 
   const chatRef = collection(db, "chat");
-  const q = query(chatRef);
-  const q2 = query(chatRef, where("uid", "==", "Tarring"));
-  console.log("q",q);
-  console.log("q2",q2);
 
   // get  message datas.
     const getData = async () => {
     const querySnapshot = await getDocs(chatRef);
+    console.log("querySnapshot",querySnapshot);
     const dataArray = querySnapshot.docs.map(doc => doc.data());
-    return dataArray;
+    console.log("dataArray", dataArray);
+    const dataArrayOrderBy = dataArray.sort((a, b) => (a.createdAt < b.createdAt) ? -1 : 1)
+
+    return dataArrayOrderBy;
   }
 
   if(messages.length === 0){

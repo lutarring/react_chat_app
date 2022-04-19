@@ -8,11 +8,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore, collection, getDocs, Timestamp, doc, setDoc } from 'firebase/firestore/lite';
 import ChatContext from '../ChatContext.tsx';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { query, orderBy, limit } from "firebase/firestore";
 
 
 
-const Chat = () => {
-const { messages, setMessage } = ChatContext.useContainer();
+
+const Chat = (props) => {
+// const { messages, setMessage } = ChatContext.useContainer();
 
   const date = moment().calendar();
   const [formValue, setFormValue] = useState('');
@@ -31,29 +33,28 @@ const { messages, setMessage } = ChatContext.useContainer();
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth();
-  const dummy = useRef();
+  //const dummy = useRef();
 
-  console.log(auth.currentUser);
-  const { uid, photoURL } = auth.currentUser; 
+  const { uid, photoURL } = auth.currentUser;
+  const createdAt = moment().format();
   const docData = {
     uid: uid,
     text: formValue,
     photoURL: photoURL,
-    createdAt: moment().format(),
+    createdAt: createdAt,
 };
+console.log(props.docData);
 
-const messageDocID = uid + formValue;
+const messageDocID = uid + createdAt;
 const setDocToFirestore = async () => {
   await setDoc(doc(db, "chat", messageDocID), docData);
   setFormValue('');
-  dummy.current.scrollIntoView({ behavior: 'smooth' });
+  //dummy.current.scrollIntoView({ behavior: 'smooth' });
 }
 
-//  const messagesRef = firestore.collection('messages');
-//   const query = messagesRef.orderBy('createdAt').limit(25);
 
-//   const [messages] = useCollectionData(query, { idField: 'id' });
-
+const messages = props.data;
+console.log("props",props);
 
   return (
     <section className="chat">
@@ -64,15 +65,15 @@ const setDocToFirestore = async () => {
           </div>
           <div className="chatroom_body">
              {messages? messages.map((m) => <Message key={m.createdAt} message={m}/>) : <></>}
-              <span ref={dummy}></span>
+              {/* <span ref={dummy}></span> */}
           </div>
           <div className="chat_bottom_bar">
           </div>
         </div>
         <div className="send">
-          <form onSubmit={setDocToFirestore}>
+          <form>
             <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
-            <button type="submit" disabled={!formValue}>SEND🕊️</button>
+            <button type="submit" disabled={!formValue} onClick={setDocToFirestore}>SEND🕊️</button>
           </form>
         </div>
       </div>
