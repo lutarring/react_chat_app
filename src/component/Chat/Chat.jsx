@@ -1,23 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../../index.css';
 import '../Chat/Chat.css';
 import Message from '../Message/Message';
 import moment from 'moment';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore, collection, getDocs, Timestamp, doc, setDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore/lite';
 import ChatContext from '../ChatContext.tsx';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { query, orderBy, limit } from "firebase/firestore";
 
 
 
-
-const Chat = (props) => {
-// const { messages, setMessage } = ChatContext.useContainer();
+const Chat = () => {
+const { messages, setMessage, counts, setCounts } = ChatContext.useContainer();
 
   const date = moment().calendar();
   const [formValue, setFormValue] = useState('');
+  const dummy = useRef();
 
   const firebaseConfig = {
   apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
@@ -33,7 +31,20 @@ const Chat = (props) => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth();
-  //const dummy = useRef();
+
+  // get  message datas.
+  const chatRef = collection(db, "chat");
+  const getData = async () => {
+  const querySnapshot = await getDocs(chatRef);
+  const dataArray = querySnapshot.docs.map(doc => doc.data());
+  const dataArrayOrderBy = dataArray.sort((a, b) => (a.createdAt < b.createdAt) ? -1 : 1)
+
+    return dataArrayOrderBy;
+  }
+
+   getData().then((d) => {
+    setMessage(d);
+  });
 
   const { uid, photoURL } = auth.currentUser;
   const createdAt = moment().format();
@@ -43,18 +54,25 @@ const Chat = (props) => {
     photoURL: photoURL,
     createdAt: createdAt,
 };
-console.log(props.docData);
 
 const messageDocID = uid + createdAt;
-const setDocToFirestore = async () => {
+const setDocToFirestore = async (e) => {
+  e.preventDefault();
   await setDoc(doc(db, "chat", messageDocID), docData);
   setFormValue('');
-  //dummy.current.scrollIntoView({ behavior: 'smooth' });
+  dummy.current.scrollIntoView({ behavior: 'smooth' });
+  setCounts(counts + 1);
 }
 
+const messagesEndRef = useRef(null)
 
-const messages = props.data;
-console.log("props",props);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages]);
 
   return (
     <section className="chat">
@@ -64,16 +82,16 @@ console.log("props",props);
           <h2>{date}</h2>
           </div>
           <div className="chatroom_body">
-             {messages? messages.map((m) => <Message key={m.createdAt} message={m}/>) : <></>}
-              {/* <span ref={dummy}></span> */}
+             {messages? messages && messages.map((m) => <Message key={m.createdAt} message={m}/>) : <></>}
+              <div ref={messagesEndRef} />
           </div>
           <div className="chat_bottom_bar">
           </div>
         </div>
         <div className="send">
-          <form>
+          <form onSubmit={setDocToFirestore}>
             <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
-            <button type="submit" disabled={!formValue} onClick={setDocToFirestore}>SEND🕊️</button>
+            <button type="submit" disabled={!formValue}>SEND🕊️</button>
           </form>
         </div>
       </div>

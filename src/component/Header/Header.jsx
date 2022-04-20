@@ -7,9 +7,12 @@ import { getAuth, signOut } from "firebase/auth";
 const Header = () => {
   const auth = getAuth();
   const [user] = useAuthState(auth);
+
+  //logout
   const signOutWithGoogle = () => {
     signOut(auth).then(() => {
     // Sign-out successful.
+    window.location.reload(false);
   }).catch((error) => {
     // An error happened.
   });

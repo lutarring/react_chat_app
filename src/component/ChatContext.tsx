@@ -3,14 +3,15 @@ import { createContainer } from 'unstated-next';
 
 // main func
 const useChatContainer = () => {
-  
-
 
   const [messages, setMessage] = useState([]);
+  const [counts, setCounts] = useState(0);
 
     return {
         messages,
         setMessage,
+        counts,
+        setCounts,
     }
 }
 

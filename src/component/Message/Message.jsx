@@ -6,7 +6,7 @@ import '../Message/Message.css';
 const Message = (props) => {
   const auth = getAuth();
     
-  const { text, uid, photoURL, createdAt } = props.message;
+  const { text, uid, photoURL } = props.message;
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 

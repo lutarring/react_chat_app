@@ -21,35 +21,13 @@ import ChatContext from '../ChatContext.tsx';
   const app = initializeApp(firebaseConfig);
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-  const db = getFirestore(app);
 
 
 const SignIn = () => {
-const { messages, setMessage } = ChatContext.useContainer();
-
   //login
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).catch((err) => alert(err.message));
   }
-
-  const chatRef = collection(db, "chat");
-
-  // get  message datas.
-    const getData = async () => {
-    const querySnapshot = await getDocs(chatRef);
-    console.log("querySnapshot",querySnapshot);
-    const dataArray = querySnapshot.docs.map(doc => doc.data());
-    console.log("dataArray", dataArray);
-    const dataArrayOrderBy = dataArray.sort((a, b) => (a.createdAt < b.createdAt) ? -1 : 1)
-
-    return dataArrayOrderBy;
-  }
-
-  if(messages.length === 0){
-   getData().then((d) => {
-    setMessage(d);
-  });
- }
 
   return (
     <div className="signIn_container">
