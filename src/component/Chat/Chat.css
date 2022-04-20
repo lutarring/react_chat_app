@@ -18,12 +18,10 @@
     display: grid;
     padding: 10px;
     background: var(--color-light);
-    height: 32rem;
+    height: 34rem;
     backdrop-filter: blur(15px);
-    overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    
   }
 
 .chat_title{
@@ -31,12 +29,14 @@
     color: var(--color-primary-bule);
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1rem;
-    height: 8%;
-    margin-bottom: 1rem;
+    height: 6%;
+    margin-bottom: 0.5rem;
+    position: sticky;
   }
 
 .chatroom_body{
-    height: 92%;
+    height: 94%;
+    overflow-y: scroll;
 }
 
 form>input {

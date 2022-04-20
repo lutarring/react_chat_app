@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&family=Noto+Sans+SC:wght@100&display=swap');
 
 .message {
     display: flex;
     align-items: center;
     margin-bottom: 0.65rem 0;
-    font-family: 'Josefin Sans', serif;
+    /* font-family: 'M PLUS Rounded 1c',
+    sans-serif;
+    font-family: 'Noto Sans SC',
+    sans-serif; */
+    font-family: 'Josefin Sans',
+        serif;
 }
 
 .sent {
@@ -17,6 +23,7 @@
     align-self: flex-end;
     margin: 0.5rem 0.5rem;
     padding: 0px 10px;
+    padding-top: 0.15rem;
 }
 
 .received p {
@@ -25,6 +32,7 @@
     align-self: flex-end;
     margin: 0.5rem 0.5rem;
     padding: 0px 10px;
+    padding-top: 0.15rem;
 }
 
 img {

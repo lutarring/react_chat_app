@@ -11,11 +11,10 @@ import ChatContext from '../ChatContext.tsx';
 
 
 const Chat = () => {
-const { messages, setMessage, counts, setCounts } = ChatContext.useContainer();
+const { messages, setMessage } = ChatContext.useContainer();
 
   const date = moment().calendar();
   const [formValue, setFormValue] = useState('');
-  const dummy = useRef();
 
   const firebaseConfig = {
   apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
@@ -39,12 +38,15 @@ const { messages, setMessage, counts, setCounts } = ChatContext.useContainer();
   const dataArray = querySnapshot.docs.map(doc => doc.data());
   const dataArrayOrderBy = dataArray.sort((a, b) => (a.createdAt < b.createdAt) ? -1 : 1)
 
-    return dataArrayOrderBy;
+  return dataArrayOrderBy;
   }
 
+  if(messages.length === 0){
    getData().then((d) => {
     setMessage(d);
+    console.log("setting!!!");
   });
+}
 
   const { uid, photoURL } = auth.currentUser;
   const createdAt = moment().format();
@@ -60,8 +62,10 @@ const setDocToFirestore = async (e) => {
   e.preventDefault();
   await setDoc(doc(db, "chat", messageDocID), docData);
   setFormValue('');
-  dummy.current.scrollIntoView({ behavior: 'smooth' });
-  setCounts(counts + 1);
+  await getData().then((d) => {
+    setMessage(d);
+    console.log("settingNew!!!");
+  });
 }
 
 const messagesEndRef = useRef(null)
