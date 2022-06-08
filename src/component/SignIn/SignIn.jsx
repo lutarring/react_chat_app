@@ -32,9 +32,15 @@ const SignIn = () => {
   return (
     <div className="signIn_container">
       <div className="signIn_body">
-        <h2 className="signIn_text">SignIn to chat</h2>
-         <BsHandIndexThumbFill className='signIn_icon'/>
-         <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
+        <div>
+          <h2 className="signIn_text">SignIn to chat</h2>
+        </div>
+        <div className='icon'>
+          <BsHandIndexThumbFill className='signIn_icon' />
+        </div>
+        <div>
+          <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
+        </div>
       </div>
     </div>
   )
