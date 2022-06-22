@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import '../SignIn/SignIn.css'
-import {BsHandIndexThumbFill} from 'react-icons/bs'
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import ChatContext from '../ChatContext.tsx';
 
   const firebaseConfig = {
   apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
@@ -26,6 +23,7 @@ import ChatContext from '../ChatContext.tsx';
 const SignIn = () => {
   //login
   const signInWithGoogle = () => {
+    console.log("123123")
     signInWithPopup(auth, provider).catch((err) => alert(err.message));
   }
 
@@ -43,7 +41,7 @@ const SignIn = () => {
           <h2>SignIn to chat</h2>
           <form>
             <div className="inputBox">
-              <button className="btn sign_button" onClick={signInWithGoogle}>
+              <button className="sign_button" onClick={signInWithGoogle}>
                 Sign in with Google
               </button>
             </div>
