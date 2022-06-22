@@ -30,20 +30,41 @@ const SignIn = () => {
   }
 
   return (
-    <div className="signIn_container">
-      <div className="signIn_body">
-        <div>
-          <h2 className="signIn_text">SignIn to chat</h2>
-        </div>
-        <div className='icon'>
-          <BsHandIndexThumbFill className='signIn_icon' />
-        </div>
-        <div>
-          <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
+    <section>
+      <div className="box">
+        <div className="square_01"></div>
+        <div className="square_02"></div>
+        <div className="square_03"></div>
+        <div className="square_04"></div>
+        <div className="square_05"></div>
+      </div>
+      <div className="sign_container">
+        <div className="form">
+          <h2>SignIn to chat</h2>
+          <form>
+            <div className="inputBox">
+              <button className="btn sign_button" onClick={signInWithGoogle}>
+                Sign in with Google
+              </button>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
-  )
+    </section>
+    // <div className="signIn_container">
+    //   <div className="signIn_body">
+    //   <div>
+    //     <h2 className="signIn_text">SignIn to chat</h2>
+    //   </div>
+    //   <div className='icon'>
+    //     <BsHandIndexThumbFill className='signIn_icon' />
+    //   </div>
+    //   <div>
+    //     <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
+    //   </div>
+    // </div>
+    // </div>
+  );
 }
 
 export default SignIn
