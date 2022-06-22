@@ -1,0 +1,83 @@
+[debug] [2022-06-22T04:45:43.717Z] ----------------------------------------------------------------------
+[debug] [2022-06-22T04:45:43.718Z] Command:       /Users/xu.lu/.nvm/versions/node/v16.15.1/bin/node /Users/xu.lu/.nvm/versions/node/v16.15.1/bin/firebase deploy
+[debug] [2022-06-22T04:45:43.718Z] CLI Version:   11.1.0
+[debug] [2022-06-22T04:45:43.719Z] Platform:      darwin
+[debug] [2022-06-22T04:45:43.719Z] Node Version:  v16.15.1
+[debug] [2022-06-22T04:45:43.720Z] Time:          Wed Jun 22 2022 13:45:43 GMT+0900 (日本標準時)
+[debug] [2022-06-22T04:45:43.720Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-22T04:45:43.768Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-22T04:45:43.768Z] > authorizing via signed-in user (lutarring@gmail.com)
+[debug] [2022-06-22T04:45:43.768Z] [iam] checking project react-chat-app-ab6e6 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-06-22T04:45:43.770Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-chat-app-ab6e6:testIamPermissions [none]
+[debug] [2022-06-22T04:45:43.770Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-chat-app-ab6e6:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-06-22T04:45:44.457Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-chat-app-ab6e6:testIamPermissions 200
+[debug] [2022-06-22T04:45:44.457Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/react-chat-app-ab6e6:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-06-22T04:45:44.458Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/react-chat-app-ab6e6 [none]
+[debug] [2022-06-22T04:45:44.929Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/react-chat-app-ab6e6 200
+[debug] [2022-06-22T04:45:44.929Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/react-chat-app-ab6e6 {"projectId":"react-chat-app-ab6e6","projectNumber":"11234019824","displayName":"react-chat-app","name":"projects/react-chat-app-ab6e6","resources":{"hostingSite":"react-chat-app-ab6e6","storageBucket":"react-chat-app-ab6e6.appspot.com","locationId":"asia-northeast1"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'react-chat-app-ab6e6'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-06-22T04:45:44.931Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/react-chat-app-ab6e6 [none]
+[debug] [2022-06-22T04:45:45.443Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/react-chat-app-ab6e6 200
+[debug] [2022-06-22T04:45:45.443Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/react-chat-app-ab6e6 {"projectId":"react-chat-app-ab6e6","projectNumber":"11234019824","displayName":"react-chat-app","name":"projects/react-chat-app-ab6e6","resources":{"hostingSite":"react-chat-app-ab6e6","storageBucket":"react-chat-app-ab6e6.appspot.com","locationId":"asia-northeast1"},"state":"ACTIVE"}
+[debug] [2022-06-22T04:45:45.445Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions [none]
+[debug] [2022-06-22T04:45:45.445Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-06-22T04:45:46.752Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions 200
+[debug] [2022-06-22T04:45:46.752Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions {"name":"projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e","status":"CREATED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[react-chat-app-ab6e6]: beginning deploy... 
+[info] i  hosting[react-chat-app-ab6e6]: found 9 files in build 
+[debug] [2022-06-22T04:45:46.762Z] [hosting] uploading with 200 concurrency
+[debug] [2022-06-22T04:45:46.950Z] [hosting] hash cache [YnVpbGQ] stored for 9 files
+[debug] [2022-06-22T04:45:46.950Z] [hosting][hash queue][FINAL] {"max":184,"min":7,"avg":32.111111111111114,"active":0,"complete":9,"success":9,"errored":0,"retried":0,"total":9,"elapsed":187}
+[debug] [2022-06-22T04:45:46.951Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e:populateFiles [none]
+[debug] [2022-06-22T04:45:46.951Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e:populateFiles {"files":{"/asset-manifest.json":"dc549a5c24a653fddcb410f241fe847720659b2553ffae575854b1d49f86e0b8","/index.html":"3d02b61126d79660c92c14f36748fb30e9fee72d3c16fa1d08ab4d2740dcebf3","/static/css/main.b244b435.css":"4da172bc51181d0a58ceafcd80aeca1319c518c47fa0a79a599cf7ba798f6a3b","/static/css/main.b244b435.css.map":"de1d98bddcdd088b05fb3ef91a269c7d8a6f304c4cde0a7a2b9cd6d49e35224a","/static/js/main.b55b1750.js.LICENSE.txt":"0e271419ed4205d1ebfca7932750af4643e74f2bd2e686cd17a9f71435d47e36","/girl_B.png":"7283965ad45820db201e8b8dc4c30f21efd08e01952866ec844dbd788159dc0e","/static/js/main.b55b1750.js":"56c9939e3f4ee0fab98c806b2dd77b920435ca7f052e5cff0f2a048b81de56d0","/static/media/Jullien.ca69c80c4af3145cfbcb.jpg":"a2ff507ef2090f959582861b86101814809d3750e484854d8c3af442087d170f","/static/js/main.b55b1750.js.map":"6337aa6650f1944cbf6d49d992334f8b581780fe5e825cc0c32d66733fc346c2"}}
+[debug] [2022-06-22T04:45:47.877Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e:populateFiles 200
+[debug] [2022-06-22T04:45:47.877Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e:populateFiles {"uploadRequiredHashes":["de1d98bddcdd088b05fb3ef91a269c7d8a6f304c4cde0a7a2b9cd6d49e35224a","dc549a5c24a653fddcb410f241fe847720659b2553ffae575854b1d49f86e0b8","3d02b61126d79660c92c14f36748fb30e9fee72d3c16fa1d08ab4d2740dcebf3","4da172bc51181d0a58ceafcd80aeca1319c518c47fa0a79a599cf7ba798f6a3b"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files"}
+[debug] [2022-06-22T04:45:47.878Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/de1d98bddcdd088b05fb3ef91a269c7d8a6f304c4cde0a7a2b9cd6d49e35224a [none]
+[debug] [2022-06-22T04:45:47.878Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/de1d98bddcdd088b05fb3ef91a269c7d8a6f304c4cde0a7a2b9cd6d49e35224a [stream]
+[debug] [2022-06-22T04:45:47.879Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/dc549a5c24a653fddcb410f241fe847720659b2553ffae575854b1d49f86e0b8 [none]
+[debug] [2022-06-22T04:45:47.880Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/dc549a5c24a653fddcb410f241fe847720659b2553ffae575854b1d49f86e0b8 [stream]
+[debug] [2022-06-22T04:45:47.881Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/3d02b61126d79660c92c14f36748fb30e9fee72d3c16fa1d08ab4d2740dcebf3 [none]
+[debug] [2022-06-22T04:45:47.881Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/3d02b61126d79660c92c14f36748fb30e9fee72d3c16fa1d08ab4d2740dcebf3 [stream]
+[debug] [2022-06-22T04:45:47.881Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/4da172bc51181d0a58ceafcd80aeca1319c518c47fa0a79a599cf7ba798f6a3b [none]
+[debug] [2022-06-22T04:45:47.881Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/4da172bc51181d0a58ceafcd80aeca1319c518c47fa0a79a599cf7ba798f6a3b [stream]
+[debug] [2022-06-22T04:45:47.882Z] [hosting][populate queue][FINAL] {"max":929,"min":929,"avg":929,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":933}
+[debug] [2022-06-22T04:45:47.882Z] [hosting] uploads queued: 4
+[debug] [2022-06-22T04:45:49.322Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/de1d98bddcdd088b05fb3ef91a269c7d8a6f304c4cde0a7a2b9cd6d49e35224a 200
+[debug] [2022-06-22T04:45:49.322Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/de1d98bddcdd088b05fb3ef91a269c7d8a6f304c4cde0a7a2b9cd6d49e35224a [stream]
+[debug] [2022-06-22T04:45:49.324Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/4da172bc51181d0a58ceafcd80aeca1319c518c47fa0a79a599cf7ba798f6a3b 200
+[debug] [2022-06-22T04:45:49.324Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/4da172bc51181d0a58ceafcd80aeca1319c518c47fa0a79a599cf7ba798f6a3b [stream]
+[debug] [2022-06-22T04:45:49.366Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/3d02b61126d79660c92c14f36748fb30e9fee72d3c16fa1d08ab4d2740dcebf3 200
+[debug] [2022-06-22T04:45:49.366Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/3d02b61126d79660c92c14f36748fb30e9fee72d3c16fa1d08ab4d2740dcebf3 [stream]
+[debug] [2022-06-22T04:45:50.293Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/dc549a5c24a653fddcb410f241fe847720659b2553ffae575854b1d49f86e0b8 200
+[debug] [2022-06-22T04:45:50.293Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e/files/dc549a5c24a653fddcb410f241fe847720659b2553ffae575854b1d49f86e0b8 [stream]
+[debug] [2022-06-22T04:45:50.294Z] [hosting][upload queue][FINAL] {"max":2416,"min":1445,"avg":1698.75,"active":0,"complete":4,"success":4,"errored":0,"retried":0,"total":4,"elapsed":2417}
+[info] ✔  hosting[react-chat-app-ab6e6]: file upload complete 
+[debug] [2022-06-22T04:45:50.294Z] [hosting] deploy completed after 3541ms
+[debug] [2022-06-22T04:45:50.299Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "react-chat-app-ab6e6"
+    },
+    "site": "react-chat-app-ab6e6",
+    "version": "projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e"
+  }
+]
+[info] i  hosting[react-chat-app-ab6e6]: finalizing version... 
+[debug] [2022-06-22T04:45:50.300Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e updateMask=status%2Cconfig
+[debug] [2022-06-22T04:45:50.300Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/11234019824/sites/react-chat-app-ab6e6/versions/3a8aa795229ccf8e {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}

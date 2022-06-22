@@ -14,25 +14,19 @@ header {
     display: flex;
   }
 
-  .back-button {
-    margin-top: 0.2rem;
-    margin-left: 2rem;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
-    width:15%;
-  }
-
   .title {
     position: relative;
     font-size: 1.4rem;
     font-family: 'Lobster', cursive;
-    width:70%;
+    width:90%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .logOut_div {
     position: relative;
-    width: 15%;
-    text-align: right;
+    width:10%;
+    text-align:left;
     }
 
 
@@ -60,12 +54,12 @@ header {
 
 /* ==================== MEDIA QUERIRES (SMALL DEICES) ===================== */
 @media screen and (max-width: 600px) {
-  .back-button,
-  .logOut_div {
-    display: none;
-  }
   .title {
-    width: 100%;
+   text-align:left;
+   padding-left: 1rem;
   }
+   .logOut_div {
+    right:5.3rem
+   }
 }
   
