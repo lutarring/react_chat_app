@@ -5,14 +5,11 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
-  authDomain: "react-chat-app-ab6e6.firebaseapp.com",
-  projectId: "react-chat-app-ab6e6",
-  storageBucket: "react-chat-app-ab6e6.appspot.com",
-  messagingSenderId: "11234019824",
-  appId: "1:11234019824:web:901bc142cdb56410907535",
-  measurementId: "G-LLKLFDNC6D",
+  //TODO
 };
 
 // Initialize Firebase
