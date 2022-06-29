@@ -70,19 +70,6 @@ const SignIn = () => {
         </div>
       </div>
     </section>
-    // <div className="signIn_container">
-    //   <div className="signIn_body">
-    //   <div>
-    //     <h2 className="signIn_text">SignIn to chat</h2>
-    //   </div>
-    //   <div className='icon'>
-    //     <BsHandIndexThumbFill className='signIn_icon' />
-    //   </div>
-    //   <div>
-    //     <button className="btn signIn_button" onClick={signInWithGoogle}>Sign in with Google</button>
-    //   </div>
-    // </div>
-    // </div>
   );
 }
 

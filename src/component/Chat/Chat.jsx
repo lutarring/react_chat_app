@@ -44,7 +44,6 @@ const { messages, setMessage } = ChatContext.useContainer();
   if(messages.length === 0){
    getData().then((d) => {
     setMessage(d);
-    console.log("setting!!!");
   });
 }
 
