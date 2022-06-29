@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Dancing+Script&family=Lobster&family=Noto+Sans+JP:wght@100&display=swap');
 
-.signIn_container{
+  .signIn_container{
   text-align: center;
   height: 100%;
   position: relative;
 }
-
 .signIn_container > div {
     margin-top: 7.5rem;
     background: var(--color-light);
@@ -56,6 +55,184 @@
   .signIn_button:hover{
     transform: scale(1.2);
   }
+  
+  .section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+  .box {
+    position: relative;
+  }
+
+.sign_container {
+  /* text-align: center; */
+  margin-top: 7.5rem;
+  position:relative;
+  width:25rem;
+  min-height: 25rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.form {
+  position: relative;
+  width:100%;
+  height: 100%;
+  padding: 40px;
+}
+
+.form h2{
+  position: relative;
+  color:#fff;
+  font-size:24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom:20px;
+}
+
+.form h2::before{
+  content: '';
+  position: absolute;
+  left:0;
+  bottom:-10px;
+  width: 80px;
+  height: 4px;
+  background:#fff;
+}
+
+
+
+.form .inputBox {
+  width:100%;
+  margin-top:20px;
+}
+
+.form .inputBox::placeholder{
+  color:#fff;
+}
+
+.sign_button {
+  width:100%;
+  background: #fff;
+  outline:none;
+  padding:10px 20px;
+  border-radius: 35px;
+  border:1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  font-size:16px;
+  letter-spacing: 1px;
+  color: #666;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  max-width: 100%;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.box{
+  position: relative;
+}
+
+.box .square_01{
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  top:-5rem;
+  right: 30rem;
+  width:6rem;
+  height:6rem;
+  animation: animate 10s linear infinite;
+}
+.box .square_02{
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  top:1.8rem;
+  left: 28rem;
+  width:6rem;
+  height:6rem;
+  z-index: 2;
+  animation: animate 10s linear infinite;
+}
+.box .square_03{
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  top:18rem;
+  right: 31rem;
+  width:4rem;
+  height:4rem;
+  z-index: 2;
+  animation: animate 10s linear infinite;
+}
+.box .square_04{
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  bottom:-30rem;
+  left: 35rem;
+  width:3rem;
+  height:3rem;
+  z-index: 2;
+  animation: animate 10s linear infinite;
+}
+
+.box .square_05{
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  top:-3rem;
+  left: 42rem;
+  width:3.5rem;
+  height:3.5rem;
+  z-index: 2;
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0%,100%
+  {
+    transform: translateY(-2rem);
+  }
+  50%{
+    transform: translateY(2rem);
+  }
+}
+
+
 
   /* ==================== MEDIA QUERIRES (MEDIUM DEICES) ===================== */
   @media screen and (max-width: 1024px) {
@@ -73,4 +250,13 @@
       margin-top: 9rem;
       width:20rem;
     }
+
+  .box{
+    display:none;
+  }
+
+  .sign_container {
+    margin-top: 5rem;
+    width:20rem;
+  }
   }

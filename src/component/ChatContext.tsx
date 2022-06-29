@@ -7,9 +7,9 @@ const useChatContainer = () => {
   const [messages, setMessage] = useState([]);
 
     return {
-        messages,
-        setMessage,
-    }
+      messages,
+      setMessage,
+    };
 }
 
 const ChatContext = createContainer(useChatContainer);

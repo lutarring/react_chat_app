@@ -14,10 +14,10 @@ import Message from './Message/Message';
 const Container = () => {
   return (
     <ChatContext.Provider>
-    <Chat />
-         <Header />
-         <SignIn />
-        <Message />
+      <Chat />
+      <Header />
+      <SignIn />
+      <Message />
     </ChatContext.Provider>
   );
 };

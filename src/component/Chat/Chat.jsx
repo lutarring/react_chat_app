@@ -11,22 +11,18 @@ import ChatContext from '../ChatContext.tsx';
 
 
 const Chat = () => {
-const { messages, setMessage } = ChatContext.useContainer();
+  const { messages, setMessage } = ChatContext.useContainer();
 
   const date = moment().calendar();
-  const [formValue, setFormValue] = useState('');
+  const [formValue, setFormValue] = useState("");
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-  apiKey: "AIzaSyD7-An2miY55MxJ5SNDAkhyPuUBvxyLD-s",
-  authDomain: "react-chat-app-ab6e6.firebaseapp.com",
-  projectId: "react-chat-app-ab6e6",
-  storageBucket: "react-chat-app-ab6e6.appspot.com",
-  messagingSenderId: "11234019824",
-  appId: "1:11234019824:web:901bc142cdb56410907535",
-  measurementId: "G-LLKLFDNC6D"
-};
+    //TODO
+  };
 
-// Initialize Firebase
+  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const auth = getAuth();
@@ -34,19 +30,20 @@ const { messages, setMessage } = ChatContext.useContainer();
   // get  message datas.
   const chatRef = collection(db, "chat");
   const getData = async () => {
-  const querySnapshot = await getDocs(chatRef);
-  const dataArray = querySnapshot.docs.map(doc => doc.data());
-  const dataArrayOrderBy = dataArray.sort((a, b) => (a.createdAt < b.createdAt) ? -1 : 1)
+    const querySnapshot = await getDocs(chatRef);
+    const dataArray = querySnapshot.docs.map((doc) => doc.data());
+    const dataArrayOrderBy = dataArray.sort((a, b) =>
+      a.createdAt < b.createdAt ? -1 : 1
+    );
 
-  return dataArrayOrderBy;
+    return dataArrayOrderBy;
+  };
+
+  if (messages.length === 0) {
+    getData().then((d) => {
+      setMessage(d);
+    });
   }
-
-  if(messages.length === 0){
-   getData().then((d) => {
-    setMessage(d);
-    console.log("setting!!!");
-  });
-}
 
   const { uid, photoURL } = auth.currentUser;
   const createdAt = moment().format();
@@ -55,27 +52,27 @@ const { messages, setMessage } = ChatContext.useContainer();
     text: formValue,
     photoURL: photoURL,
     createdAt: createdAt,
-};
+  };
 
-const messageDocID = uid + createdAt;
-const setDocToFirestore = async (e) => {
-  e.preventDefault();
-  await setDoc(doc(db, "chat", messageDocID), docData);
-  setFormValue('');
-  await getData().then((d) => {
-    setMessage(d);
-    console.log("settingNew!!!");
-  });
-}
+  const messageDocID = uid + createdAt;
+  const setDocToFirestore = async (e) => {
+    e.preventDefault();
+    await setDoc(doc(db, "chat", messageDocID), docData);
+    setFormValue("");
+    await getData().then((d) => {
+      setMessage(d);
+      console.log("settingNew!!!");
+    });
+  };
 
-const messagesEndRef = useRef(null)
+  const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    scrollToBottom()
+    scrollToBottom();
   }, [messages]);
 
   return (
@@ -83,24 +80,34 @@ const messagesEndRef = useRef(null)
       <div className="container chat_container">
         <div className="chat_box">
           <div className="chat_title">
-          <h2>{date}</h2>
+            <h2>{date}</h2>
           </div>
           <div className="chatroom_body">
-             {messages? messages && messages.map((m) => <Message key={m.createdAt} message={m}/>) : <></>}
-              <div ref={messagesEndRef} />
+            {messages ? (
+              messages &&
+              messages.map((m) => <Message key={m.createdAt} message={m} />)
+            ) : (
+              <></>
+            )}
+            <div ref={messagesEndRef} />
           </div>
-          <div className="chat_bottom_bar">
-          </div>
+          <div className="chat_bottom_bar"></div>
         </div>
         <div className="send">
           <form onSubmit={setDocToFirestore}>
-            <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
-            <button type="submit" disabled={!formValue}>SEND🕊️</button>
+            <input
+              value={formValue}
+              onChange={(e) => setFormValue(e.target.value)}
+              placeholder="say something nice"
+            />
+            <button type="submit" disabled={!formValue}>
+              SEND🕊️
+            </button>
           </form>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default Chat
